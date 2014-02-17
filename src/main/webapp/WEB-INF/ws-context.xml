@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+    <context:component-scan base-package="ru.smply.was.jaxws.async" />
+
+    <jaxws:endpoint id="webServiceAsync"
+                    implementor="ru.smply.was.jaxws.async.WebServiceAsyncEndpoint"
+                    address="/webServiceAsync">
+        <jaxws:properties>
+            <entry key="faultStackTraceEnabled" value="true" />
+            <entry key="exceptionMessageCauseEnabled" value="true" />
+        </jaxws:properties>
+    </jaxws:endpoint>
+</beans>
